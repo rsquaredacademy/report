@@ -27,7 +27,7 @@ report_ols <- function() {
   file_create(report_file)
 
   # copy template from inst folder
-  copy_template(folder_name)
+  copy_template(folder_name, "olsrr_template")
 
   # add yaml
   cat('---\n', file = report_file, append =FALSE)
