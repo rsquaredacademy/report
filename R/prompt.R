@@ -18,10 +18,10 @@ add_ext <- function(folder_name, file_name) {
 
 #' @importFrom fs file_copy file_exists
 #' @importFrom here here
-copy_template <- function(folder_name) {
+copy_template <- function(folder_name, template_name) {
   pkg_loc <- find.package("reports")
-  template_path <- glue(pkg_loc, "/templates/olsrr_template.Rmd")
-  report_path <- glue(here(), "/", folder_name, "/olsrr_template.Rmd")
+  template_path <- glue(pkg_loc, '/templates/', template_name, '.Rmd')
+  report_path <- glue(here(), "/", folder_name, "/", template_name, ".Rmd")
   if (!file_exists(report_path)) {
     file_copy(template_path, report_path)
   }
@@ -61,3 +61,10 @@ ask_type <- function() {
 add_yaml <- function(report_file) {
 
 }
+
+ask_data_name <- function() {
+  showPrompt(title = "Data Name",
+             message = "Specify the name of the data set",
+             default = NULL)
+}
+
