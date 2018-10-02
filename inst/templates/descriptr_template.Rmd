@@ -1,0 +1,73 @@
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+```{r load, message=FALSE, echo=FALSE}
+library(descriptr)
+library(purrr)
+library(rlang)
+```
+
+```{r dataprep}
+is_num  <- map_lgl(report_data, is.numeric)
+is_fact <- map_lgl(report_data, is.factor)
+num_df  <- report_data[, is_num]
+nam_n   <- names(num_df)
+nc_n    <- ncol(num_df)
+fact_df <- report_data[, is_fact]
+nam_f   <- names(fact_df)
+nc_f    <- ncol(fact_df)
+```
+
+## Data Screening
+
+```{r screener}
+ds_screener(report_data)
+```
+
+## Summary Statistics
+
+```{r summary}
+for (i in seq_len(nc_n)) {
+  k <- ds_summary_stats(report_data, nam_n[i])
+  print(k)
+}  
+```
+
+## Frequency Table (Continuous Data)
+
+```{r fcont}
+for (i in seq_len(nc_n)) {
+  k <- ds_freq_cont(report_data, nam_n[i])
+  print(k)
+}  
+```
+
+## Group Summary
+
+```{r gsummary}
+for (i in seq_len(nc_f)) {
+  for (j in seq_len(nc_n)) {
+    k <- ds_group_summary(report_data, !!sym(nam_f[i]), !!sym(nam_n[j]))
+    print(k)
+  }
+}
+```
+
+## One Way Tables
+
+```{r oway}
+ds_oway_tables(report_data)
+```
+
+## Two Way Tables
+
+```{r tway}
+ds_tway_tables(report_data)
+```
+
+
+
+
+
