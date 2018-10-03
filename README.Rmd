@@ -15,10 +15,10 @@ knitr::opts_chunk$set(
 
 # report
 
-> Generate automated reports from Rsquared Academy packages
+> Generate reports from Rsquared Academy packages
 
-[![CRAN\_Status\_Badge](http://www.r-pkg.org/badges/version/reports)](https://cran.r-project.org/package=rfm) 
-[![Travis-CI Build Status](https://travis-ci.org/rsquaredacademy/reports.svg?branch=master)](https://travis-ci.org/rsquaredacademy/reports) [![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/github/rsquaredacademy/reports?branch=master&svg=true)](https://ci.appveyor.com/project/rsquaredacademy/reports)  ![](https://img.shields.io/badge/lifecycle-experimental-orange.svg)
+[![CRAN\_Status\_Badge](http://www.r-pkg.org/badges/version/report)](https://cran.r-project.org/package=report) 
+[![Travis-CI Build Status](https://travis-ci.org/rsquaredacademy/report.svg?branch=master)](https://travis-ci.org/rsquaredacademy/report) [![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/github/rsquaredacademy/report?branch=master&svg=true)](https://ci.appveyor.com/project/rsquaredacademy/report)  ![](https://img.shields.io/badge/lifecycle-experimental-orange.svg)
 
 The goal of report is to generate automated reports for summary statistics,
 RFM analysis, linear and logistic regression using the following packages:
@@ -34,7 +34,7 @@ report is not available on CRAN yet. You can install the development version fro
 
 ``` r
 # install.packages("devtools")
-devtools::install_github("rsquaredacademy/reports")
+devtools::install_github("rsquaredacademy/report")
 ```
 
 ## Usage

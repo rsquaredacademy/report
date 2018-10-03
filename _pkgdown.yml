@@ -1,0 +1,43 @@
+url: https://report.rsquaredacademy.com
+
+authors:
+  Aravind Hebbali:
+    href: https://www.aravindhebbali.com
+
+templates:
+  params:
+    bootswatch: cosmo
+    docsearch:
+      api_key:
+      index_name: report
+
+navbar:
+  title: "report"
+  type: inverse
+  left:
+    - text: "Home"
+      href: index.html
+    - text: "Reference"
+      menu:
+        - text: "Functions"
+          href: reference/index.html
+        - text: "News"
+          href: news/index.html
+  right:
+   - icon: fa-github
+     href: https://github.com/rsquaredacademy/report
+
+home:
+  links:
+  - text: Learn more
+    href: https://www.rsquaredacademy.com
+
+reference:
+- title: Report
+  
+  contents:
+  - report_descriptr
+  - report_rfm
+  - report_ols
+  - report_blr
+
