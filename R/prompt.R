@@ -55,7 +55,7 @@ ask_model <- function() {
 ask_type <- function() {
   showPrompt(title = "Document Type",
              message = "Specify the document type (pdf or html)",
-             default = NULL)
+             default = "html")
 }
 
 add_yaml <- function(report_file) {
@@ -92,3 +92,8 @@ ask_revenue <- function() {
              default = NULL)  
 }
 
+
+prep_data <- function(mydata) {
+  save(mydata, file = glue(mydata, ".RData"))
+  load(glue(here(), '/', mydata, '.RData'))
+}
