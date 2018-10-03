@@ -19,16 +19,27 @@ report_blr <- function() {
   document_type <- ask_type()
 
   # prep report folders and file
+  cat(blue$bold(symbol$tick), glue('Creating ', green("'"), green(folder_name), 
+                                 green("'"), ' folder'), '\n')
   dir_create(folder_name)
 
   # add .Rmd extension to file_name
   report_file <- add_ext(folder_name, file_name)
+  Sys.sleep(2)
+  cat(blue$bold(symbol$tick), glue('Creating ', green("'"), green(file_name), 
+                                 green("'"), ' file'), '\n')
   file_create(report_file)
 
   # copy template from inst folder
+  Sys.sleep(2)
+  cat(blue$bold(symbol$tick), glue('Copying report template into ', green("'"), green(folder_name), 
+                                 green("'"), ' folder'), '\n')
   copy_template(folder_name, "blorr_template")
 
   # add yaml
+  Sys.sleep(2)
+  cat(blue$bold(symbol$tick), glue('Adding YAML to ', green("'"), green(file_name), 
+                                 green("'"), ' file'), '\n')
   cat('---\n', file = report_file, append =FALSE)
   cat(glue('title: "', {report_title}, '"', '\n\n'), file = report_file,
       append =TRUE)
@@ -58,11 +69,20 @@ report_blr <- function() {
   file.append(report_file, path_temp)
 
   # load data
+  Sys.sleep(2)
+  cat(blue$bold(symbol$tick), glue('Loading data ', green("'"), green(data_name), 
+                                 green("'")), '\n')
   prep_data(data_name)
 
   # build and view report
-  render(report_file)
+  Sys.sleep(2)
+  cat(blue$bold(symbol$tick), glue('Generating ', green("'"), green(report_title), 
+                                 green("'")), '\n')
+  render(report_file, quiet = TRUE)
   report_name <- glue(folder_name, "/", file_name, ".", document_type)
+  Sys.sleep(2)
+  cat(blue$bold(symbol$tick), glue('Opening ', green("'"), green(report_title), 
+                                 green("'"), ' in default browser'), '\n')
   browseURL(report_name)
 
 }
