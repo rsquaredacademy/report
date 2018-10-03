@@ -4,7 +4,7 @@ knitr::opts_chunk$set(echo = FALSE)
 ```
 
 ```{r load, message=FALSE, echo=FALSE}
-library(olsrr)
+suppressWarnings(suppressMessages(library(olsrr, quietly = TRUE)))
 ```
 
 <style type="text/css">

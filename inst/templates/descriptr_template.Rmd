@@ -4,9 +4,9 @@ knitr::opts_chunk$set(echo = FALSE)
 ```
 
 ```{r load, message=FALSE, echo=FALSE}
-library(descriptr)
-library(purrr)
-library(rlang)
+suppressWarnings(suppressMessages(library(descriptr, quietly = TRUE)))
+suppressWarnings(suppressMessages(library(purrr, quietly = TRUE)))
+suppressWarnings(suppressMessages(library(rlang, quietly = TRUE)))
 ```
 
 ```{r dataprep}
