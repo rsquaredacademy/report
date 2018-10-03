@@ -1,0 +1,117 @@
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+```{r load, message=FALSE, echo=FALSE}
+library(blorr)
+library(magrittr)
+```
+
+## Regression Output
+
+```{r reg1}
+blr_regress(model)
+```
+
+## Stepwise Selection
+
+```{r stepwise1}
+blr_step_aic_both(model)
+```
+
+### Plot
+
+```{r stepwise3, fig.align='center', fig.width=7, fig.height=5}
+model %>%
+  blr_step_aic_both() %>%
+  plot()
+```
+
+## Model Fit Statistics
+
+```{r mfs}
+blr_model_fit_stats(model)
+```
+
+## Confusion Matrix
+
+```{r val5}
+blr_confusion_matrix(model, cutoff = 0.5)
+```
+
+## Hosmer Lemeshow Test
+
+```{r val6}
+blr_test_hosmer_lemeshow(model)
+```
+
+## Gains Table 
+
+```{r val1}
+blr_gains_table(model)
+```
+
+## Lift Chart
+
+```{r val7, fig.align='center', fig.width=7, fig.height=5}
+model %>%
+	blr_gains_table() %>%
+	plot()
+```
+
+## ROC Curve
+
+```{r val2, fig.align='center', fig.width=7, fig.height=5}
+model %>%
+	blr_gains_table() %>%
+  blr_roc_curve()
+```
+
+## KS Chart
+
+```{r val3, fig.align='center', fig.width=7, fig.height=5}
+model %>%
+	blr_gains_table() %>%
+  blr_ks_chart()
+```
+
+## Decile Lift Chart
+
+```{r val9, fig.align='center', fig.width=7, fig.height=5}
+model %>%
+  blr_gains_table() %>%
+  blr_decile_lift_chart()
+```
+
+## Capture Rate by Decile
+
+```{r val8, fig.align='center', fig.width=7, fig.height=5}
+model %>%
+  blr_gains_table() %>%
+  blr_decile_capture_rate()
+```
+
+## Lorenz Curve
+
+```{r val4, fig.align='center', fig.width=7, fig.height=5}
+blr_lorenz_curve(model)
+```
+
+## Influence Diagnostics
+
+```{r infl, fig.align='center', fig.height=10, fig.width=8}
+blr_plot_diag_influence(model)
+```
+
+## Leverage Diagnostics
+
+```{r lev, fig.align='center', fig.height=7, fig.width=7}
+blr_plot_diag_leverage(model)
+```
+
+## Fitted Values Diagnostics
+
+```{r fit, fig.align='center', fig.height=7, fig.width=7}
+blr_plot_diag_fit(model)
+```
