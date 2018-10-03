@@ -10,7 +10,9 @@ report_ols()
 Generate detailed linear regression report.
 }
 \examples{
+\dontrun{
 model_data <- descriptr::mtcarz
 report_ols()
+}
 
 }

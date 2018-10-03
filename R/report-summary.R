@@ -3,8 +3,10 @@
 #' Generate detailed summary statistics for each variable/column in a data set.
 #'
 #' @examples
+#' \dontrun{
 #' library(descriptr)
 #' report_descriptr()
+#' }
 #'
 #' @importFrom fs dir_create file_create
 #' @importFrom rmarkdown render

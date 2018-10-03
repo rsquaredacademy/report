@@ -10,7 +10,9 @@ report_rfm()
 Generate recency, frequency and monetary value analysis report.
 }
 \examples{
+\dontrun{
 rfm_data <- rfm::rfm_data_orders
 report_rfm()
+}
 
 }

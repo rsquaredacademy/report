@@ -3,8 +3,10 @@
 #' Generate detailed logistic regression report.
 #' 
 #' @examples
+#' \dontrun{
 #' model_data <- blorr::bank_marketing
 #' report_blr()
+#' }
 #'
 #' @importFrom rstudioapi sendToConsole
 #'

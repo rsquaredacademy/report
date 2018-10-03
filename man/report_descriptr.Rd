@@ -10,7 +10,9 @@ report_descriptr()
 Generate detailed summary statistics for each variable/column in a data set.
 }
 \examples{
+\dontrun{
 library(descriptr)
 report_descriptr()
+}
 
 }
