@@ -23,6 +23,36 @@ devtools::install_github("rsquaredacademy/reports")
 Usage
 -----
 
+Before generating the reports, it is important to ensure that the data used in the report is defined in the current session i.e. when you run `ls()` in the console, the data must be listed by R.
+
+### Summary Statistics
+
+``` r
+library(descriptr)
+report_descriptr()
+```
+
+### RFM Analysis
+
+``` r
+rfm_data <- rfm::rfm_data_orders
+report_rfm()
+```
+
+### Linear Regression
+
+``` r
+model_data <- descriptr::mtcarz
+report_ols()
+```
+
+### Logistic Regression
+
+``` r
+model_data <- blorr::bank_marketing
+report_blr()
+```
+
 Community Guidelines
 --------------------
 
