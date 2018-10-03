@@ -16,6 +16,7 @@ report_ols <- function() {
   report_title  <- ask_title()
   report_author <- ask_author()
   report_date   <- ask_date()
+  data_name     <- ask_data_name()
   model_formula <- ask_model()
   document_type <- ask_type()
 
@@ -41,8 +42,14 @@ report_ols <- function() {
       append =TRUE)
   cat('---\n\n\n', file = report_file, append =TRUE)
 
+  # read data
+  cat('```{r read, message=FALSE, echo=FALSE}', '\n', file = report_file, append =TRUE)
+  cat(glue('load("', here(), '/', data_name, '.Rdata")'), '\n', file = report_file, append =TRUE)
+  cat(glue('model_data <- ', data_name), '\n', file = report_file, append =TRUE)
+  cat('```', '\n', file = report_file, append =TRUE)
+
   # add model
-  use_model <- glue('model <- ', model_formula)
+  use_model <- glue('model <- lm(', model_formula, ', data = ', data_name, ')')
   cat('## Model', '\n\n', file = report_file, append =TRUE)
   cat('```{r model, echo=FALSE}', '\n', file = report_file, append =TRUE)
   cat(use_model, '\n', file = report_file, append =TRUE)
@@ -51,6 +58,9 @@ report_ols <- function() {
   # append template to report file
   path_temp <- glue(folder_name, "/", "olsrr_template.Rmd")
   file.append(report_file, path_temp)
+
+  # load data
+  prep_data(data_name)
 
   # build and view report
   render(report_file)

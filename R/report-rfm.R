@@ -57,6 +57,9 @@ report_rfm <- function() {
   path_temp <- glue(folder_name, "/", "rfm_template.Rmd")
   file.append(report_file, path_temp)
 
+  # load data
+  prep_data(data_name)
+
   # build and view report
   render(report_file)
   report_name <- glue(folder_name, "/", file_name, ".", document_type)
