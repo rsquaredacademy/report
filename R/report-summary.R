@@ -2,6 +2,10 @@
 #'
 #' Generate detailed summary statistics for each variable/column in a data set.
 #'
+#' @examples
+#' library(descriptr)
+#' report_descriptr()
+#'
 #' @importFrom fs dir_create file_create
 #' @importFrom rmarkdown render
 #' @importFrom utils browseURL

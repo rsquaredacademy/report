@@ -2,6 +2,10 @@
 #'
 #' Generate recency, frequency and monetary value analysis report.
 #'
+#' @examples
+#' rfm_data <- rfm::rfm_data_orders
+#' report_rfm()
+#'
 #' @export
 #'
 report_rfm <- function() {

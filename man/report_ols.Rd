@@ -9,3 +9,8 @@ report_ols()
 \description{
 Generate detailed linear regression report.
 }
+\examples{
+model_data <- descriptr::mtcarz
+report_ols()
+
+}

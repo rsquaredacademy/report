@@ -9,3 +9,8 @@ report_descriptr()
 \description{
 Generate detailed summary statistics for each variable/column in a data set.
 }
+\examples{
+library(descriptr)
+report_descriptr()
+
+}

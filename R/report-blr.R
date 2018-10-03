@@ -1,6 +1,10 @@
 #' Logistic regression report
 #'
 #' Generate detailed logistic regression report.
+#' 
+#' @examples
+#' model_data <- blorr::bank_marketing
+#' report_blr()
 #'
 #' @importFrom rstudioapi sendToConsole
 #'

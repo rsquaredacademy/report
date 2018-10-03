@@ -2,6 +2,10 @@
 #'
 #' Generate detailed linear regression report.
 #'
+#' @examples
+#' model_data <- descriptr::mtcarz
+#' report_ols()
+#'
 #' @importFrom crayon blue green bold
 #' @importFrom clisymbols symbol
 #'

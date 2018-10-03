@@ -9,3 +9,8 @@ report_blr()
 \description{
 Generate detailed logistic regression report.
 }
+\examples{
+model_data <- blorr::bank_marketing
+report_blr()
+
+}
