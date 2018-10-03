@@ -68,3 +68,27 @@ ask_data_name <- function() {
              default = NULL)
 }
 
+ask_analysis_date <- function() {
+  showPrompt(title = "Analysis Date",
+             message = "Specify the date of analysis",
+             default = as.character(today()))
+}
+
+ask_customer_id <- function() {
+  showPrompt(title = "Customer ID",
+             message = "Specify the name of the column to identify customer id",
+             default = NULL)  
+}
+
+ask_order_date <- function() {
+  showPrompt(title = "Order Date",
+             message = "Specify the name of the column to identify order date",
+             default = NULL)  
+}
+
+ask_revenue <- function() {
+  showPrompt(title = "Revenue",
+             message = "Specify the name of the column to identify revenue",
+             default = NULL)  
+}
+
