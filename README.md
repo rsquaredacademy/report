@@ -1,9 +1,13 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
-reports
-=======
+report
+======
 
-The goal of reports is to generate automated reports for summary statistics, RFM analysis, linear and logistic regression using the following packages:
+> Generate automated reports from Rsquared Academy packages
+
+[![CRAN\_Status\_Badge](http://www.r-pkg.org/badges/version/reports)](https://cran.r-project.org/package=rfm) [![Travis-CI Build Status](https://travis-ci.org/rsquaredacademy/reports.svg?branch=master)](https://travis-ci.org/rsquaredacademy/reports) [![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/github/rsquaredacademy/reports?branch=master&svg=true)](https://ci.appveyor.com/project/rsquaredacademy/reports) ![](https://img.shields.io/badge/lifecycle-experimental-orange.svg)
+
+The goal of report is to generate automated reports for summary statistics, RFM analysis, linear and logistic regression using the following packages:
 
 -   [descriptr](https://descriptr.rsquaredacademy.com)
 -   [rfm](https://rfm.rsquaredacademy.com)
@@ -13,7 +17,7 @@ The goal of reports is to generate automated reports for summary statistics, RFM
 Installation
 ------------
 
-reports is not available on CRAN yet. You can install the development version from [GitHub](https://github.com/) with:
+report is not available on CRAN yet. You can install the development version from [GitHub](https://github.com/) with:
 
 ``` r
 # install.packages("devtools")

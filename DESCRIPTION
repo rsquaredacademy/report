@@ -1,10 +1,10 @@
-Package: reports
+Package: report
 Type: Package
-Title: Rsquared Academy Package Reports
+Title: Generate Reports from Rsquared Academy Packages
 Version: 0.1.0
 Authors@R: person("Aravind", "Hebbali", email = "hebbali.aravind@gmail.com", role = c("aut", "cre"), 
     comment = c(ORCID = "0000-0001-9220-9669"))
-Description: Generate automated reports for summary statistics, RFM analysis, linear and 
+Description: Generate reports for summary statistics, RFM analysis, linear and 
     logistic regression using 'descriptr', 'rfm', 'olsrr' and 'blorr' packages.
 Depends:
     R(>= 3.3)
