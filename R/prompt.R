@@ -2,13 +2,13 @@
 ask_folder_name <- function() {
   showPrompt(title = "Folder Title",
                            message = "Title of the Folder",
-                           default = "model_report")
+                           default = "report")
 }
 
 ask_file_name <- function() {
   showPrompt(title = "File Title",
              message = "Title of the File",
-             default = "model_report")
+             default = "report")
 }
 
 #' @importFrom glue glue
@@ -30,7 +30,7 @@ copy_template <- function(folder_name, template_name) {
 ask_title <- function() {
   showPrompt(title = "Report Title",
              message = "Title of the Report",
-             default = "Model Summary Report")
+             default = "Report")
 }
 
 ask_author <- function() {
@@ -48,7 +48,7 @@ ask_date <- function() {
 
 ask_model <- function() {
   showPrompt(title = "Define Model",
-             message = "Write the model formula using `lm`",
+             message = "Write the model formula",
              default = NULL)
 }
 
