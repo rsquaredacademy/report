@@ -30,7 +30,7 @@ copy_template <- function(folder_name, template_name) {
 ask_title <- function() {
   showPrompt(title = "Report Title",
              message = "Title of the Report",
-             default = "Report")
+             default = "report")
 }
 
 ask_author <- function() {
@@ -77,19 +77,19 @@ ask_analysis_date <- function() {
 ask_customer_id <- function() {
   showPrompt(title = "Customer ID",
              message = "Specify the name of the column to identify customer id",
-             default = NULL)  
+             default = "customer_id")  
 }
 
 ask_order_date <- function() {
   showPrompt(title = "Order Date",
              message = "Specify the name of the column to identify order date",
-             default = NULL)  
+             default = "order_date")  
 }
 
 ask_revenue <- function() {
   showPrompt(title = "Revenue",
              message = "Specify the name of the column to identify revenue",
-             default = NULL)  
+             default = "revenue")  
 }
 
 
