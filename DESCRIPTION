@@ -20,6 +20,7 @@ Imports:
     utils
 Suggests: 
     blorr,
+    covr,
     descriptr,
     olsrr,
     rfm
