@@ -1,0 +1,8 @@
+report_folder: "model_report"
+report_file: "model_report"
+report_title: "Model Summary"
+report_date: as.character(today())
+report_author: NULL
+report_type: "html"
+model: NULL
+data: NULL
