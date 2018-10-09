@@ -4,7 +4,10 @@
 \alias{report_rfm}
 \title{RFM report}
 \usage{
-report_rfm()
+report_rfm(use_yaml = FALSE)
+}
+\arguments{
+\item{use_yaml}{Use YAML file to specify report details.}
 }
 \description{
 Generate recency, frequency and monetary value analysis report.
@@ -12,7 +15,13 @@ Generate recency, frequency and monetary value analysis report.
 \examples{
 \dontrun{
 rfm_data <- rfm::rfm_data_orders
+
+# interactive
 report_rfm()
+
+# use yaml file
+report_rfm(use_yaml = TRUE)
+
 }
 
 }

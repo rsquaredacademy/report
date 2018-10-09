@@ -19,9 +19,18 @@ add_ext <- function(folder_name, file_name) {
 #' @importFrom fs file_copy file_exists
 #' @importFrom here here
 copy_template <- function(folder_name, template_name) {
-  pkg_loc <- find.package("reports")
+  pkg_loc <- find.package("report")
   template_path <- glue(pkg_loc, '/templates/', template_name, '.Rmd')
   report_path <- glue(here(), "/", folder_name, "/", template_name, ".Rmd")
+  if (!file_exists(report_path)) {
+    file_copy(template_path, report_path)
+  }
+}
+
+copy_yaml <- function(yaml_name) {
+  pkg_loc <- find.package("report")
+  template_path <- glue(pkg_loc, '/yaml/_', yaml_name, '.yml')
+  report_path <- glue(here(), "/_", yaml_name, ".yml")
   if (!file_exists(report_path)) {
     file_copy(template_path, report_path)
   }

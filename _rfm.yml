@@ -1,11 +1,11 @@
 report_folder: "rfm_report"
 report_file: "rfm_report"
 report_title: "RFM Analysis"
-report_date: NULL
+report_date: as.character(today())
 report_author: NULL
 report_type: "html"
 data: NULL
 analysis_date: NULL
 customer_id: NULL
-order_date: NULL
+order_data: NULL
 revenue: NULL
