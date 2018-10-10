@@ -5,29 +5,72 @@
 #' @examples
 #' \dontrun{
 #' model_data <- blorr::bank_marketing
+#' 
+#' # interactive
 #' report_blr()
+#'
+#' # use yaml file
+#' report_blr(use_yaml = TRUE)
 #' }
 #'
 #' @importFrom rstudioapi sendToConsole
 #'
 #' @export
 #'
-report_blr <- function() {
+report_blr <- function(use_yaml = FALSE) {
 
-  # prompt report details
-  folder_name   <- ask_folder_name()
-  file_name     <- ask_file_name()
-  report_title  <- ask_title()
-  report_author <- ask_author()
-  report_date   <- ask_date()
-  data_name     <- ask_data_name()
-  model_formula <- ask_model()
-  document_type <- ask_type()
+  if (use_yaml) {
+    copy_yaml("logistic")
+    file.edit(glue(here(), "/_logistic.yml"))
+    cat(glue('Please update the report details in the ', green('_logistic.yml'), ' file.'), "\n\n")
+    sleep_time <- showPrompt("Update Time", "Specify the time required in seconds to update the YAML file?", 30)
+    Sys.sleep(sleep_time)
+    update_status <- showQuestion("File Status", "Have you updated the yaml file?", 
+                         "Yes", "No")
+    documentSaveAll()
+    if (update_status) {
+      logistic_yaml <- read_yaml(glue(here(), "/_logistic.yml"))  
+    } else {
+      stop("Please update the YAML file with the report details.", call. = FALSE)
+    }
+    
+  }
+
+  if (use_yaml) {
+    folder_name   <- logistic_yaml$report_folder
+    file_name     <- logistic_yaml$report_file
+    report_title  <- logistic_yaml$report_title
+    report_author <- logistic_yaml$report_author
+    report_date   <- logistic_yaml$report_date
+    data_name     <- logistic_yaml$data
+    model_formula <- logistic_yaml$model
+    document_type <- logistic_yaml$report_type
+
+  } else {
+    if (isAvailable()) {
+    folder_name   <- ask_folder_name()
+    file_name     <- ask_file_name()
+    report_title  <- ask_title()
+    report_author <- ask_author()
+    report_date   <- ask_date()
+    data_name     <- ask_data_name()
+    model_formula <- ask_model()
+    document_type <- ask_type() 
+    } else {
+      stop("RStudio must be installed.", call. = FALSE)
+    }
+    
+  }
 
   # prep report folders and file
   cat(blue$bold(symbol$tick), glue('Creating ', green("'"), green(folder_name), 
                                  green("'"), ' folder'), '\n')
   dir_create(folder_name)
+  if (use_yaml) {
+    Sys.sleep(2)
+    cat(blue$bold(symbol$tick), glue('Moving ', green("'_logistic.yml'"), ' file to ', folder_name), '\n')
+    file_move(glue(here(), "/_logistic.yml"), glue(here(), "/", folder_name, "/_logistic.yml"))
+  }
 
   # add .Rmd extension to file_name
   report_file <- add_ext(folder_name, file_name)
