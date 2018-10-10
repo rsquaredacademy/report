@@ -18,7 +18,7 @@
 #'
 #' @importFrom yaml read_yaml
 #' @importFrom fs file_move
-#' @importFrom rstudioapi showQuestion documentSaveAll
+#' @importFrom rstudioapi showQuestion documentSaveAll isAvailable
 #'
 #' @export
 #'
@@ -51,7 +51,7 @@ report_rfm <- function(use_yaml = FALSE) {
     document_type <- rfm_yaml$report_type
 
   } else {
-    if (isAvailable) {
+    if (isAvailable()) {
       folder_name   <- ask_folder_name()
       file_name     <- ask_file_name()
       report_title  <- ask_title()
