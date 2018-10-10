@@ -4,7 +4,7 @@
 \alias{report_ols}
 \title{Linear regression report}
 \usage{
-report_ols()
+report_ols(use_yaml = FALSE)
 }
 \description{
 Generate detailed linear regression report.
@@ -12,7 +12,12 @@ Generate detailed linear regression report.
 \examples{
 \dontrun{
 model_data <- descriptr::mtcarz
+
+# interactive
 report_ols()
+
+# use yaml file
+report_ols(use_yaml = TRUE)
 }
 
 }

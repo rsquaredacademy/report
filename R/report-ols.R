@@ -5,7 +5,12 @@
 #' @examples
 #' \dontrun{
 #' model_data <- descriptr::mtcarz
+#' 
+#' # interactive
 #' report_ols()
+#'
+#' # use yaml file
+#' report_ols(use_yaml = TRUE)
 #' }
 #'
 #' @importFrom crayon blue green bold
@@ -13,22 +18,63 @@
 #'
 #' @export
 #'
-report_ols <- function() {
+report_ols <- function(use_yaml = FALSE) {
+
+  if (use_yaml) {
+    copy_yaml("linear")
+    file.edit(glue(here(), "/_linear.yml"))
+    cat(glue('Please update the report details in the ', green('_linear.yml'), ' file.'), "\n\n")
+    sleep_time <- showPrompt("Update Time", "Specify the time required in seconds to update the YAML file?", 30)
+    Sys.sleep(sleep_time)
+    update_status <- showQuestion("File Status", "Have you updated the yaml file?", 
+                         "Yes", "No")
+    documentSaveAll()
+    if (update_status) {
+      linear_yaml <- read_yaml(glue(here(), "/_linear.yml"))  
+    } else {
+      stop("Please update the YAML file with the report details.", call. = FALSE)
+    }
+    
+  }
+
+  if (use_yaml) {
+    folder_name   <- linear_yaml$report_folder
+    file_name     <- linear_yaml$report_file
+    report_title  <- linear_yaml$report_title
+    report_author <- linear_yaml$report_author
+    report_date   <- linear_yaml$report_date
+    data_name     <- linear_yaml$data
+    model_formula <- linear_yaml$model
+    document_type <- linear_yaml$report_type
+
+  } else {
+    if (isAvailable()) {
+      folder_name   <- ask_folder_name()
+	  file_name     <- ask_file_name()
+	  report_title  <- ask_title()
+	  report_author <- ask_author()
+	  report_date   <- ask_date()
+	  data_name     <- ask_data_name()
+	  model_formula <- ask_model()
+	  document_type <- ask_type() 
+    } else {
+      stop("RStudio must be installed.", call. = FALSE)
+    }
+    
+  }
 
   # prompt report details
-  folder_name   <- ask_folder_name()
-  file_name     <- ask_file_name()
-  report_title  <- ask_title()
-  report_author <- ask_author()
-  report_date   <- ask_date()
-  data_name     <- ask_data_name()
-  model_formula <- ask_model()
-  document_type <- ask_type()
+  
 
   # prep report folders and file
   cat(blue$bold(symbol$tick), glue('Creating ', green("'"), green(folder_name), 
                                  green("'"), ' folder'), '\n')
   dir_create(folder_name)
+  if (use_yaml) {
+    Sys.sleep(2)
+    cat(blue$bold(symbol$tick), glue('Moving ', green("'_linear.yml'"), ' file to ', folder_name), '\n')
+    file_move(glue(here(), "/_linear.yml"), glue(here(), "/", folder_name, "/_linear.yml"))
+  }
 
   # add .Rmd extension to file_name
   report_file <- add_ext(folder_name, file_name)
