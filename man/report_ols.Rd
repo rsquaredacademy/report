@@ -6,6 +6,9 @@
 \usage{
 report_ols(use_yaml = FALSE)
 }
+\arguments{
+\item{use_yaml}{Use YAML file to specify report details.}
+}
 \description{
 Generate detailed linear regression report.
 }

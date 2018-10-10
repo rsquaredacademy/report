@@ -2,6 +2,8 @@
 #'
 #' Generate detailed linear regression report.
 #'
+#' @param use_yaml Use YAML file to specify report details.
+#'
 #' @examples
 #' \dontrun{
 #' model_data <- descriptr::mtcarz

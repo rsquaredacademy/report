@@ -4,7 +4,10 @@
 \alias{report_blr}
 \title{Logistic regression report}
 \usage{
-report_blr()
+report_blr(use_yaml = FALSE)
+}
+\arguments{
+\item{use_yaml}{Use YAML file to specify report details.}
 }
 \description{
 Generate detailed logistic regression report.
@@ -12,7 +15,12 @@ Generate detailed logistic regression report.
 \examples{
 \dontrun{
 model_data <- blorr::bank_marketing
+
+# interactive
 report_blr()
+
+# use yaml file
+report_blr(use_yaml = TRUE)
 }
 
 }

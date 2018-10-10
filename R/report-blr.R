@@ -1,7 +1,9 @@
 #' Logistic regression report
 #'
-#' Generate detailed logistic regression report.
-#' 
+#' Generate detailed logistic regression report. 
+#'
+#' @param use_yaml Use YAML file to specify report details.
+#'
 #' @examples
 #' \dontrun{
 #' model_data <- blorr::bank_marketing
