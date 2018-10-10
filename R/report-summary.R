@@ -2,10 +2,18 @@
 #'
 #' Generate detailed summary statistics for each variable/column in a data set.
 #'
+#' @param use_yaml Use YAML file to specify report details.
+#'
 #' @examples
 #' \dontrun{
 #' library(descriptr)
+#' 
+#' # interactive
 #' report_descriptr()
+#'
+#' # use yaml file
+#' report_descriptr(use_yaml = TRUE)
+#'
 #' }
 #'
 #' @importFrom fs dir_create file_create
@@ -14,21 +22,58 @@
 #'
 #' @export
 #'
-report_descriptr <- function() {
+report_descriptr <- function(use_yaml = FALSE) {
 
-  # prompt report details
-  folder_name   <- ask_folder_name()
-  file_name     <- ask_file_name()
-  report_title  <- ask_title()
-  report_author <- ask_author()
-  report_date   <- ask_date()
-  data_name     <- ask_data_name()
-  document_type <- ask_type()
+  if (use_yaml) {
+    copy_yaml("descriptive")
+    file.edit(glue(here(), "/_descriptive.yml"))
+    cat(glue('Please update the report details in the ', green('_descriptive.yml'), ' file.'), "\n\n")
+    sleep_time <- showPrompt("Update Time", "Specify the time required in seconds to update the YAML file?", 30)
+    Sys.sleep(sleep_time)
+    update_status <- showQuestion("File Status", "Have you updated the yaml file?", 
+                         "Yes", "No")
+    documentSaveAll()
+    if (update_status) {
+      descriptive_yaml <- read_yaml(glue(here(), "/_descriptive.yml"))  
+    } else {
+      stop("Please update the YAML file with the report details.", call. = FALSE)
+    }
+    
+  }
 
+  if (use_yaml) {
+    folder_name   <- descriptive_yaml$report_folder
+    file_name     <- descriptive_yaml$report_file
+    report_title  <- descriptive_yaml$report_title
+    report_author <- descriptive_yaml$report_author
+    report_date   <- descriptive_yaml$report_date
+    data_name     <- descriptive_yaml$data
+    document_type <- descriptive_yaml$report_type
+
+  } else {
+    if (isAvailable()) {
+      folder_name   <- ask_folder_name()
+      file_name     <- ask_file_name()
+      report_title  <- ask_title()
+      report_author <- ask_author()
+      report_date   <- ask_date()
+      data_name     <- ask_data_name()
+      document_type <- ask_type()   
+    } else {
+      stop("RStudio must be installed.", call. = FALSE)
+    }
+    
+  }
+  
   # prep report folders and file
   cat(blue$bold(symbol$tick), glue('Creating ', green("'"), green(folder_name), 
                                  green("'"), ' folder'), '\n')
   dir_create(folder_name)
+  if (use_yaml) {
+    Sys.sleep(2)
+    cat(blue$bold(symbol$tick), glue('Moving ', green("'_descriptive.yml'"), ' file to ', folder_name), '\n')
+    file_move(glue(here(), "/_descriptive.yml"), glue(here(), "/", folder_name, "/_descriptive.yml"))
+  }
 
   # add .Rmd extension to file_name
   report_file <- add_ext(folder_name, file_name)

@@ -1,7 +1,7 @@
 report_folder: "summary_report"
 report_file: "summary_report"
 report_title: "Summary Statistics"
-report_date: as.character(today())
+report_date: NULL
 report_author: NULL
 report_type: "html"
-data: "mtcars"
+data: "mtcarz"
