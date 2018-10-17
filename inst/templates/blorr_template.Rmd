@@ -6,6 +6,34 @@ knitr::opts_chunk$set(echo = FALSE)
 ```{r load, message=FALSE, echo=FALSE}
 suppressWarnings(suppressMessages(library(blorr, quietly = TRUE)))
 suppressWarnings(suppressMessages(library(magrittr, quietly = TRUE)))
+suppressWarnings(suppressMessages(library(purrr, quietly = TRUE)))
+suppressWarnings(suppressMessages(library(rlang, quietly = TRUE)))
+```
+
+```{r dataprep}
+report_data <- model$data
+is_fact <- map_lgl(report_data, is.factor)
+fact_df <- report_data[, is_fact]
+response <- names(model.frame(model))[1]
+predictors <- names(fact_df)                          
+```
+
+<br>
+
+## Bivariate Analysis
+
+```{r blor1}
+blr_bivariate_analysis(report_data, !!sym(response), !!!predictors)
+```
+
+<br>
+
+## Weight of Evidence & Information Value
+
+<br>
+
+```{r blor2}
+blr_woe_iv_stats(report_data, !!sym(response), !!!predictors)
 ```
 
 <br>
@@ -17,8 +45,6 @@ suppressWarnings(suppressMessages(library(magrittr, quietly = TRUE)))
 ```{r reg1}
 blr_regress(model)
 ```
-
-<br>
 
 ## Stepwise Selection
 
