@@ -13,283 +13,405 @@ suppressWarnings(suppressMessages(library(olsrr, quietly = TRUE)))
 }
 </style>
 
+<br>
 
 ## Regression
+
+<br>
 
 ```{r regress}
 ols_regress(model)
 ```
 
+<br>
+
 ## Residual QQ Plot
+
+<br>
 
 ```{r qqresid, fig.width=5, fig.height=5, fig.align='center'}
 ols_plot_resid_qq(model)
 ```
 
+<br>
+
 ## Residual Normality Test
+
+<br>
 
 ```{r normtest}
 ols_test_normality(model)
 ```
 
+<br>
+
 Correlation between observed residuals and expected residuals under normality.
+
+<br>
 
 ```{r corrtest}
 ols_test_correlation(model)
 ```
 
+<br>
+
 ## Residual vs Fitted Values Plot
+
+<br>
 
 ```{r rvsfplot, fig.width=5, fig.height=5, fig.align='center'}
 ols_plot_resid_fit(model)
 ```
 
+<br>
+
 ## Residual Histogram
+
+<br>
 
 ```{r residhist, fig.width=5, fig.height=5, fig.align='center'}
 ols_plot_resid_hist(model)
 ```
 
+<br>
+
 ## Cook's D Bar Plot
+
+<br>
 
 ```{r ckdbp, fig.width=7, fig.height=5, fig.align='center'}
 ols_plot_cooksd_bar(model)
 ```
 
+<br>
+
 ## Cook's D Chart
+
+<br>
 
 ```{r ckchart, fig.width=5, fig.height=5, fig.align='center'}
 ols_plot_cooksd_chart(model)
 ```
 
+<br>
+
 ## DFBETAs Panel
+
+<br>
 
 ```{r dfbpanel, fig.width=7, fig.height=7, fig.align='center'}
 ols_plot_dfbetas(model)
 ```
 
+<br>
+
 ## DFFITS Plot
+
+<br>
 
 ```{r dfitsplot, fig.width=5, fig.height=5, fig.align='center'}
 ols_plot_dffits(model)
 ```
 
+<br>
+
 ## Studentized Residual Plot
+
+<br>
 
 ```{r srplot, fig.width=5, fig.height=5, fig.align='center'}
 ols_plot_resid_stud(model)
 ```
 
+<br>
+
 ## Standardized Residual Chart
+
+<br>
 
 ```{r srchart, fig.width=5, fig.height=5, fig.align='center'}
 ols_plot_resid_stand(model)
 ```
 
+<br>
+
 ## Studentized Residuals vs Leverage Plot
+
+<br>
 
 ```{r studlev, fig.width=7, fig.height=5, fig.align='center'}
 ols_plot_resid_lev(model)
 ```
 
+<br>
+
 ## Deleted Studentized Residual vs Fitted Values Plot
+
+<br>
 
 ```{r dsrvsp, fig.width=7, fig.height=5, fig.align='center'}
 ols_plot_resid_stud_fit(model)
 ```
 
+<br>
+
 ## Hadi Plot
+
+<br>
 
 ```{r hadiplot, fig.width=5, fig.height=5, fig.align='center'}
 ols_plot_hadi(model)
 ```
 
+<br>
+
 ## Potential Residual Plot
+
+<br>
 
 ```{r potres, fig.width=5, fig.height=5, fig.align='center'}
 ols_plot_resid_pot(model)
 ```
 
+<br>
+
 ## Collinearity Diagnostics
 
-Collinearity implies two variables are near perfect linear combinations of one
-another. Multicollinearity involves more than two variables. In the presence of multicollinearity, 
-regression estimates are unstable and have high standard errors.
+<br>
 
 ### VIF
 
-Variance inflation factors measure the inflation in the variances of the
-parameter estimates due to collinearities that exist among the predictors.
-It is a measure of how much the variance of the estimated regression coefficient
-$\beta_{k}$ is "inflated" by the existence of correlation among the predictor
-variables in the model. A VIF of 1 means that there is no correlation among the
-kth predictor and the remaining predictor variables, and hence the variance of
-$\beta_{k}$ is not inflated at all. The general rule of thumb is that VIFs
-exceeding 4 warrant further investigation, while VIFs exceeding 10 are signs of
-serious multicollinearity requiring correction.
-
-Steps to calculate VIF:
-
-- Regress the $k^{th}$ predictor on rest of the predictors in the model.
-- Compute the ${R}^{2}_{k}$
-
-$$VIF = \frac{1}{1 - {R}^{2}_{k}} = \frac{1}{Tolerance}$$
+<br>
 
 ```{r viftol}
 model <- lm(mpg ~ disp + hp + wt + qsec, data = mtcars)
 ols_vif_tol(model)
 ```
 
-### Tolerance
-
-Percent of variance in the predictor that cannot be accounted for by other
-predictors.
-
-Steps to calculate tolerance:
-
-- Regress the $k^{th}$ predictor on rest of the predictors in the model.
-- Compute the ${R}^{2}_{k}$
-
-$$Tolerance = 1 - {R}^{2}_{k}$$
-
+<br>
 
 ### Condition Index
 
-Most multivariate statistical approaches involve decomposing a correlation matrix into linear combinations of variables. The linear combinations are chosen so that the first combination has the largest possible variance (subject to some restrictions we won't discuss), the second combination has the next largest variance, subject to being uncorrelated with the first, the third has the largest possible variance, subject to being uncorrelated with the first and second, and so forth. The variance of each of these linear combinations is called an eigenvalue. Collinearity is spotted by finding 2 or more variables that have large proportions of variance (.50 or more) that correspond to large condition indices. A rule of thumb is to label as large those condition indices in the range of 30 or larger.
-
+<br>
 
 ```{r cindex}
 model <- lm(mpg ~ disp + hp + wt + qsec, data = mtcars)
 ols_eigen_cindex(model)
 ```
 
+<br>
+
 ### Collinearity Diagnostics
+
+<br>
 
 ```{r colldiag}
 model <- lm(mpg ~ disp + hp + wt + qsec, data = mtcars)
 ols_coll_diag(model)
 ```
 
+<br>
+
 ## Residual Fit Spread Plot
+
+<br>
 
 ```{r rfsplot, fig.width=10, fig.height=5, fig.align='center'}
 ols_plot_resid_fit_spread(model)
 ```
 
+<br>
+
 ## Part & Partial Correlations
+
+<br>
 
 ```{r partcor}
 ols_correlations(model)
 ```
 
+<br>
+
 ## Observed vs Predicted Plot
+
+<br>
 
 ```{r obspred, fig.width=5, fig.height=5, fig.align='center'}
 ols_plot_obs_fit(model)
 ```
 
+<br>
+
 ### Diagnostics Panel
+
+<br>
 
 ```{r diagpanel, fig.width=10, fig.height=10, fig.align='center'}
 ols_plot_diagnostics(model)
 ```
 
+<br>
+
 ## Added Variable Plot
+
+<br>
 
 ```{r avplot, fig.width=10, fig.height=10, fig.align='center'}
 ols_plot_added_variable(model)
 ```
 
+<br>
+
 ## Residual Plus Component Plot
+
+<br>
 
 ```{r cplusr, fig.width=10, fig.height=10, fig.align='center'}
 ols_plot_comp_plus_resid(model)
 ```
 
+<br>
+
 ## Breusch Pagan Test
+
+<br>
 
 ```{r bp1}
 ols_test_breusch_pagan(model)
 ```
 
+<br>
+
 ## Score Test
+
+<br>
 
 ```{r score1}
 ols_test_score(model)
 ```
 
+<br>
+
 ## F Test
+
+<br>
 
 ```{r ftest1}
 ols_test_f(model)
 ```
 
+<br>
+
 ## All Possible Regression
+
+<br>
 
 ```{r allsub}
 ols_step_all_possible(model)
 ```
 
-The `plot` method shows the panel of fit criteria for all possible regression methods. 
+<br>
+
+#### Plot
+
+<br>
 
 ```{r allsubplot, fig.width=10, fig.height=10, fig.align='center'}
 k <- ols_step_all_possible(model)
 plot(k)
 ```
 
+<br>
+
 ## Best Subset Regression
+
+<br>
 
 ```{r bestsub, size='tiny'}
 ols_step_best_subset(model)
 ```
 
-The `plot` method shows the panel of fit criteria for best subset regression methods. 
+<br>
+
+#### Plot
+
+<br>
 
 ```{r bestsubplot, fig.width=10, fig.height=10, fig.align='center'}
 k <- ols_step_best_subset(model)
 plot(k)
 ```
 
+<br>
+
 ## Stepwise AIC Forward Regression
 
+<br>
+
 ### Variable Selection
+
+<br>
 
 ```{r stepaicf1}
 ols_step_forward_aic(model)
 ```
 
+<br>
+
 ### Plot
+
+<br>
 
 ```{r stepaicf2, fig.width=5, fig.height=5, fig.align='center'}
 k <- ols_step_forward_aic(model)
 plot(k)
 ```
 
+<br>
+
 ## Stepwise AIC Backward Regression
 
+<br>
+
 ### Variable Selection
+
+<br>
 
 ```{r stepaicb1}
 k <- ols_step_backward_aic(model)
 k
 ```
 
+<br>
+
 ### Plot
+
+<br>
 
 ```{r stepaicb2, fig.width=5, fig.height=5, fig.align='center'}
 k <- ols_step_backward_aic(model)
 plot(k)
 ```
 
+<br>
+
 ## Stepwise AIC Regression
 
+<br>
+
 ### Variable Selection
+
+<br>
 
 ```{r stepwiseaic1}
 ols_step_both_aic(model)
 ```
 
+<br>
+
 ### Plot
+
+<br>
 
 ```{r stepwiseaic2, fig.width=5, fig.height=5, fig.align='center'}
 k <- ols_step_both_aic(model)

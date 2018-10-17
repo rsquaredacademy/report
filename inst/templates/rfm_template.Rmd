@@ -4,57 +4,95 @@ knitr::opts_chunk$set(echo = FALSE)
 suppressWarnings(suppressMessages(library(dplyr, quietly = TRUE)))
 ```
 
+<br>
+
 ## RFM Analysis
+
+<br>
 
 ```{r rfm}
 rfm_result
 ```
 
+<br>
+
 ## Heat Map
+
+<br>
 
 ```{r heatmap, fig.align='center', fig.width=6, fig.height=5}
 rfm_heatmap(rfm_result)
 ```
 
+<br>
+
 ## Bar Chart
+
+<br>
 
 ```{r barchart, fig.align='center', fig.width=6, fig.height=5}
 rfm_bar_chart(rfm_result)
 ```
 
+<br>
+
 ## Histogram
+
+<br>
 
 ```{r rfmhist, fig.align='center', fig.width=6, fig.height=5}
 rfm_histograms(rfm_result)
 ```
 
+<br>
+
 ## Customers by Orders
+
+<br>
 
 ```{r rfmorders, fig.align='center', fig.width=6, fig.height=5}
 rfm_order_dist(rfm_result)
 ```
 
+<br>
+
 ## Scatter Plots
 
+<br>
+
 #### Recency vs Monetary Value
+
+<br>
 
 ```{r mr, fig.align='center', fig.width=6, fig.height=6}
 rfm_rm_plot(rfm_result)
 ```
 
+<br>
+
 #### Frequency vs Monetary Value
+
+<br>
 
 ```{r fm, fig.align='center', fig.width=6, fig.height=6}
 rfm_fm_plot(rfm_result)
 ```
 
+<br>
+
 #### Recency vs Frequency 
+
+<br>
 
 ```{r fr, fig.align='center', fig.width=6, fig.height=6}
 rfm_rf_plot(rfm_result)
 ```
 
+<br>
+
 ## Segmentation
+
+<br>
 
 ```{r segment}
 segment_names <- c("Champions", "Loyal Customers", "Potential Loyalist",
@@ -73,19 +111,31 @@ frequency_lower, frequency_upper, monetary_lower, monetary_upper)
 segments
 ```
 
+<br>
+
 ## Median Recency
+
+<br>
 
 ```{r mrecency, fig.align='center', fig.width=6, fig.height=5}
 rfm_plot_median_recency(segments)
 ```
 
+<br>
+
 ## Median Frequency
+
+<br>
 
 ```{r mfrequency, fig.align='center', fig.width=6, fig.height=5}
 rfm_plot_median_frequency(segments)
 ```
 
+<br>
+
 ## Median Monetary Value
+
+<br>
 
 ```{r mmonetary, fig.align='center', fig.width=6, fig.height=5}
 rfm_plot_median_monetary(segments)

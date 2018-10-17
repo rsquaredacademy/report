@@ -41,3 +41,10 @@ reference:
   - report_ols
   - report_blr
 
+- title: Sample Reports 
+
+  contents:
+  - view_report_ols
+  - view_report_blr
+  - view_report_rfm
+  - view_report_descriptr

@@ -7,6 +7,7 @@ knitr::opts_chunk$set(echo = FALSE)
 suppressWarnings(suppressMessages(library(descriptr, quietly = TRUE)))
 suppressWarnings(suppressMessages(library(purrr, quietly = TRUE)))
 suppressWarnings(suppressMessages(library(rlang, quietly = TRUE)))
+suppressWarnings(suppressMessages(library(glue, quietly = TRUE)))
 ```
 
 ```{r dataprep}
@@ -20,48 +21,78 @@ nam_f   <- names(fact_df)
 nc_f    <- ncol(fact_df)
 ```
 
+<br>
+
 ## Data Screening
+
+<br>
 
 ```{r screener}
 ds_screener(report_data)
 ```
 
+<br>
+
 ## Summary Statistics
+
+<br>
 
 ```{r summary}
 for (i in seq_len(nc_n)) {
+  cat("\n")
+  cat(glue("Variable: ", nam_n[i]))
+  cat("\n")
   k <- ds_summary_stats(report_data, nam_n[i])
   print(k)
+  cat("\n\n")
 }  
 ```
 
+<br>
+
 ## Frequency Table (Continuous Data)
+
+<br>
 
 ```{r fcont}
 for (i in seq_len(nc_n)) {
   k <- ds_freq_cont(report_data, nam_n[i])
   print(k)
+  cat("\n")
 }  
 ```
 
+<br>
+
 ## Group Summary
+
+<br>
 
 ```{r gsummary}
 for (i in seq_len(nc_f)) {
   for (j in seq_len(nc_n)) {
+    cat("\n")
     k <- ds_group_summary(report_data, !!sym(nam_f[i]), !!sym(nam_n[j]))
     print(k)
   }
 }
 ```
 
+<br>
+
 ## One Way Tables
+
+<br>
 
 ```{r oway}
 ds_oway_tables(report_data)
 ```
 
+<br>
+
 ## Two Way Tables
+
+<br>
 
 ```{r tway}
 ds_tway_tables(report_data)

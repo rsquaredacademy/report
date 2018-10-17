@@ -8,19 +8,31 @@ suppressWarnings(suppressMessages(library(blorr, quietly = TRUE)))
 suppressWarnings(suppressMessages(library(magrittr, quietly = TRUE)))
 ```
 
+<br>
+
 ## Regression Output
+
+<br>
 
 ```{r reg1}
 blr_regress(model)
 ```
 
+<br>
+
 ## Stepwise Selection
+
+<br>
 
 ```{r stepwise1}
 blr_step_aic_both(model)
 ```
 
+<br>
+
 ### Plot
+
+<br>
 
 ```{r stepwise3, fig.align='center', fig.width=7, fig.height=5}
 model %>%
@@ -28,31 +40,51 @@ model %>%
   plot()
 ```
 
+<br>
+
 ## Model Fit Statistics
+
+<br>
 
 ```{r mfs}
 blr_model_fit_stats(model)
 ```
 
+<br>
+
 ## Confusion Matrix
+
+<br>
 
 ```{r val5}
 blr_confusion_matrix(model, cutoff = 0.5)
 ```
 
+<br>
+
 ## Hosmer Lemeshow Test
+
+<br>
 
 ```{r val6}
 blr_test_hosmer_lemeshow(model)
 ```
 
+<br>
+
 ## Gains Table 
+
+<br>
 
 ```{r val1}
 blr_gains_table(model)
 ```
 
+<br>
+
 ## Lift Chart
+
+<br>
 
 ```{r val7, fig.align='center', fig.width=7, fig.height=5}
 model %>%
@@ -60,7 +92,11 @@ model %>%
 	plot()
 ```
 
+<br>
+
 ## ROC Curve
+
+<br>
 
 ```{r val2, fig.align='center', fig.width=7, fig.height=5}
 model %>%
@@ -68,7 +104,11 @@ model %>%
   blr_roc_curve()
 ```
 
+<br>
+
 ## KS Chart
+
+<br>
 
 ```{r val3, fig.align='center', fig.width=7, fig.height=5}
 model %>%
@@ -76,7 +116,11 @@ model %>%
   blr_ks_chart()
 ```
 
+<br>
+
 ## Decile Lift Chart
+
+<br>
 
 ```{r val9, fig.align='center', fig.width=7, fig.height=5}
 model %>%
@@ -84,7 +128,11 @@ model %>%
   blr_decile_lift_chart()
 ```
 
+<br>
+
 ## Capture Rate by Decile
+
+<br>
 
 ```{r val8, fig.align='center', fig.width=7, fig.height=5}
 model %>%
@@ -92,25 +140,41 @@ model %>%
   blr_decile_capture_rate()
 ```
 
+<br>
+
 ## Lorenz Curve
+
+<br>
 
 ```{r val4, fig.align='center', fig.width=7, fig.height=5}
 blr_lorenz_curve(model)
 ```
 
+<br>
+
 ## Influence Diagnostics
+
+<br>
 
 ```{r infl, fig.align='center', fig.height=10, fig.width=8}
 blr_plot_diag_influence(model)
 ```
 
+<br>
+
 ## Leverage Diagnostics
+
+<br>
 
 ```{r lev, fig.align='center', fig.height=7, fig.width=7}
 blr_plot_diag_leverage(model)
 ```
 
+<br>
+
 ## Fitted Values Diagnostics
+
+<br>
 
 ```{r fit, fig.align='center', fig.height=7, fig.width=7}
 blr_plot_diag_fit(model)
