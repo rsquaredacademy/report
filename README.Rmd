@@ -30,9 +30,8 @@ RFM analysis, linear and logistic regression using the following packages:
 
 ## Installation
 
-report is not available on CRAN yet. You can install the development version from [GitHub](https://github.com/) with:
-
 ``` r
+# Install development version from GitHub
 # install.packages("devtools")
 devtools::install_github("rsquaredacademy/report")
 ```
