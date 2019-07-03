@@ -29,6 +29,10 @@ navbar:
 
 home:
   links:
+  - text: Browse source code
+    href: https://github.com/rsquaredacademy/report
+  - text: Report a bug
+    href: https://github.com/rsquaredacademy/report/issues
   - text: Learn more
     href: https://www.rsquaredacademy.com
 
@@ -48,3 +52,4 @@ reference:
   - view_report_blr
   - view_report_rfm
   - view_report_descriptr
+  

@@ -96,9 +96,9 @@
 <div id="installation" class="section level2">
 <h2 class="hasAnchor">
 <a href="#installation" class="anchor"></a>Installation</h2>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="co"># Install development version from GitHub</span></a>
-<a class="sourceLine" id="cb1-2" data-line-number="2"><span class="co"># install.packages("devtools")</span></a>
-<a class="sourceLine" id="cb1-3" data-line-number="3">devtools<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/devtools/topics/reexports">install_github</a></span>(<span class="st">"rsquaredacademy/report"</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" title="1"><span class="co"># Install development version from GitHub</span></a>
+<a class="sourceLine" id="cb1-2" title="2"><span class="co"># install.packages("devtools")</span></a>
+<a class="sourceLine" id="cb1-3" title="3">devtools<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/devtools/topics/reexports">install_github</a></span>(<span class="st">"rsquaredacademy/report"</span>)</a></code></pre></div>
 </div>
 <div id="usage" class="section level2">
 <h2 class="hasAnchor">
@@ -107,26 +107,26 @@
 <div id="summary-statistics" class="section level3">
 <h3 class="hasAnchor">
 <a href="#summary-statistics" class="anchor"></a>Summary Statistics</h3>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(descriptr)</a>
-<a class="sourceLine" id="cb2-2" data-line-number="2"><span class="kw"><a href="reference/report_descriptr.html">report_descriptr</a></span>()</a></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" title="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(descriptr)</a>
+<a class="sourceLine" id="cb2-2" title="2"><span class="kw"><a href="reference/report_descriptr.html">report_descriptr</a></span>()</a></code></pre></div>
 </div>
 <div id="rfm-analysis" class="section level3">
 <h3 class="hasAnchor">
 <a href="#rfm-analysis" class="anchor"></a>RFM Analysis</h3>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1">rfm_data &lt;-<span class="st"> </span>rfm<span class="op">::</span>rfm_data_orders</a>
-<a class="sourceLine" id="cb3-2" data-line-number="2"><span class="kw"><a href="reference/report_rfm.html">report_rfm</a></span>()</a></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" title="1">rfm_data &lt;-<span class="st"> </span>rfm<span class="op">::</span>rfm_data_orders</a>
+<a class="sourceLine" id="cb3-2" title="2"><span class="kw"><a href="reference/report_rfm.html">report_rfm</a></span>()</a></code></pre></div>
 </div>
 <div id="linear-regression" class="section level3">
 <h3 class="hasAnchor">
 <a href="#linear-regression" class="anchor"></a>Linear Regression</h3>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" data-line-number="1">model_data &lt;-<span class="st"> </span>descriptr<span class="op">::</span>mtcarz</a>
-<a class="sourceLine" id="cb4-2" data-line-number="2"><span class="kw"><a href="reference/report_ols.html">report_ols</a></span>()</a></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" title="1">model_data &lt;-<span class="st"> </span>descriptr<span class="op">::</span>mtcarz</a>
+<a class="sourceLine" id="cb4-2" title="2"><span class="kw"><a href="reference/report_ols.html">report_ols</a></span>()</a></code></pre></div>
 </div>
 <div id="logistic-regression" class="section level3">
 <h3 class="hasAnchor">
 <a href="#logistic-regression" class="anchor"></a>Logistic Regression</h3>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" data-line-number="1">model_data &lt;-<span class="st"> </span>blorr<span class="op">::</span>bank_marketing</a>
-<a class="sourceLine" id="cb5-2" data-line-number="2"><span class="kw"><a href="reference/report_blr.html">report_blr</a></span>()</a></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" title="1">model_data &lt;-<span class="st"> </span>blorr<span class="op">::</span>bank_marketing</a>
+<a class="sourceLine" id="cb5-2" title="2"><span class="kw"><a href="reference/report_blr.html">report_blr</a></span>()</a></code></pre></div>
 </div>
 </div>
 <div id="community-guidelines" class="section level2">
@@ -141,6 +141,10 @@
     <div class="links">
 <h2>Links</h2>
 <ul class="list-unstyled">
+<li>Browse source code at <br><a href="https://github.com/rsquaredacademy/report">https://​github.com/​rsquaredacademy/​report</a>
+</li>
+<li>Report a bug at <br><a href="https://github.com/rsquaredacademy/report/issues">https://​github.com/​rsquaredacademy/​report/​issues</a>
+</li>
 <li>Learn more at <br><a href="https://www.rsquaredacademy.com">https://​www.rsquaredacademy.com</a>
 </li>
 </ul>
