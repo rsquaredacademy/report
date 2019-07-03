@@ -109,7 +109,7 @@ report_blr <- function(use_yaml = FALSE) {
   cat('```', '\n', file = report_file, append =TRUE)
 
   # add model
-  use_model <- glue('model <- glm(', model_formula, ', data = ', data_name, ', family = binomial(link = "logit"))')
+  use_model <- glue('model <- glm(', model_formula, ', data = model_data, family = binomial(link = "logit"))')
   cat('\n\n', file = report_file, append =TRUE)
   cat('```{r model, echo=FALSE}', '\n', file = report_file, append =TRUE)
   cat(use_model, '\n', file = report_file, append =TRUE)
