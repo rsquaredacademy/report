@@ -1,3 +1,5 @@
+> **Archived (November 2026).** This package is no longer maintained. Its reporting ideas now live in the Rsquared Academy courses (https://app.rsquaredacademy.com). The code stays here for reference.
+
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
